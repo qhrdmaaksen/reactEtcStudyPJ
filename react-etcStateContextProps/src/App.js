@@ -15,7 +15,8 @@ function App() {
 	* -어떤 함수가 절대 변경되선안된다면 useCallback 을 사용해 함수를 저장하면됨
 	* -두번째 인자는 useCallback 호출에 대한 의존성 배열이며 함수를 감싼 컴포넌트로부터 전달받은 모든것을 사용할 수 있음
 	* -- state or props or context 를 지정할 수 있음
-	* ---두 번째 인자를 비워두면 해당 setShowParagraph 배열은 변경되지않을 것이라는것을 명시*/
+	* ---두 번째 인자를 비워두면 해당 setShowParagraph 배열은 변경되지않을 것이라는것을 명시
+	*/
 	const toggleShowParagraphBTN = useCallback(() => {
 		/*allowToggle 은 useCallback 안에 함수로 지정해놨기에 최신 스냅샷이아닌 이전 함수 생성 시점의 state 의 값을 저장중이다
 		* -하지만 의존성 주입으로 allowToggle 을 설정하게되면 최신의 값만을 사용하게 된다 */
@@ -25,9 +26,9 @@ function App() {
 		}
 	}, [allowToggle])
 
-	const allowToggleHandler = () => {
+	const allowToggleHandler = useCallback(() => {
 		setAllowToggle(true)
-	}
+	},[])
 
 	return (
 			<div className="app">
