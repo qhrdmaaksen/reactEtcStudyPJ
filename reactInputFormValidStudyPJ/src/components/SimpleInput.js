@@ -1,11 +1,13 @@
 import {useState, useRef} from 'react';
-
+import '../index.css'
 const SimpleInput = (props) => {
-
-	const [enteredName, setEnteredName] = useState('')
 
 	/*input 을 ref 로 설정함으로써 필요할 때 input 요소로부터 값을 읽음*/
 	const nameInputRef = useRef()
+
+	const [enteredName, setEnteredName] = useState('')
+
+	const [enteredNameValid, setEnteredNameValid] = useState(true)
 
 	const nameInputChangeHandler = (event) => {
 		/*event.target 이 입력 값이 되고 키 입력마다 해당 함수가 작동해 enteredName state update*/
@@ -16,6 +18,14 @@ const SimpleInput = (props) => {
 		/*onSubmit 에있는 함수에는 기본 값 방지를 필수로 걸어두자
 		* -*/
 		event.preventDefault()
+
+		/*.trim()을 이용해 입력 값의 처음부터 끝 사이에 있는 공백문자를 없앨 수 있음
+		* 입력된이름의 유효성 검사*/
+		if (enteredName.trim() === ''){
+			setEnteredNameValid(false)
+			return ; /*빈 문자열일 경우 실행되지않도록 return 하여 함수의 뒷부분을 실행되지않도록함*/
+		}
+		setEnteredNameValid(true)
 
 		/*nameInputChangeHandler Fn 에 의해 마지막으로 저장된 name 콘솔 출력*/
 		console.log('formSubmissionHandler ::: ', enteredName)
@@ -29,9 +39,12 @@ const SimpleInput = (props) => {
 		setEnteredName('')
 	}
 
+	/*입력 값이 true/false 라면 css 의 form-control invalid 로*/
+	const nameInputClasses = enteredNameValid ? 'form-control' :'form-control invalid'
+
 	return (
 			<form onSubmit={formSubmissionHandler}>
-				<div className='form-control'>
+				<div className={nameInputClasses}>
 					<label htmlFor='name'>Your Name</label>
 					<input
 							ref={nameInputRef}
@@ -40,6 +53,7 @@ const SimpleInput = (props) => {
 							id='name'
 							onChange={nameInputChangeHandler}/>
 				</div>
+				{!enteredNameValid && <p className="error-text">이름 입력란이 비어있습니다. 이름을 입력해주세요.</p>}
 				<div className="form-actions">
 					<button>Submit</button>
 				</div>
