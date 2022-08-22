@@ -4,15 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8cbc9c9-296c-4c43-9ac8-78818f69dff4" name="변경" comment="feat : 이름 입력란 클릭 후 입력하지않고 벗어난 경우 inValid 처리,&#10;입력 완료 후 입력란 초기화 처리,  &#10;&#10;-onBlur 속성 추가 및 입력란 클릭 후 미 입력 시 error 메시지 출력하도록함&#10;-setEnteredName 으로 state 를 빈 문자열로 처리&#10;&#10;--기능 정상 확인 완료 커밋">
+    <list default="true" id="d8cbc9c9-296c-4c43-9ac8-78818f69dff4" name="변경" comment="feat : form 에 하나라도 유효하지 않는게있다면 submit 할 수 없도록 기능 추가&#10;&#10;-formIsValid 변수를 기본 false 로 두고 만약 enteredNameIsValid 입력된 입력창이 유효하다면 버튼을 활성화, 그 반대일 경우 비활성화 설정&#10;&#10;&#10;style : index.css 에 button disabled 일 경우 css class 추가&#10;&#10;-버튼이 disabled 일 경우, hover 일 경우, active 할 경우 클릭되지 않도록, 그리고 cursor 는 허용하지않도록 style 추가&#10;&#10;--기능 정상 확인 완료 커밋">
+      <change afterPath="$PROJECT_DIR$/src/hooks/use-input.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SimpleInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SimpleInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -52,7 +59,7 @@
       <option name="presentableId" value="Default" />
       <updated>1661073781996</updated>
       <workItem from="1661073785136" duration="141000" />
-      <workItem from="1661074002562" duration="18669000" />
+      <workItem from="1661074002562" duration="27777000" />
     </task>
     <task id="LOCAL-00001" summary="feat : 이름 입력 기능 활성화&#10;&#10;-useState 와 useRef 를 통해 각 한 가지씩의 방법으로 입력 기능 추가&#10;-useState 와 useRef 의 입력 및 초기화 방식을 공부하게됨&#10;&#10;--기능 정상 확인 완료 커밋">
       <created>1661084390160</created>
@@ -82,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661106861170</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat : form 에 하나라도 유효하지 않는게있다면 submit 할 수 없도록 기능 추가&#10;&#10;-formIsValid 변수를 기본 false 로 두고 만약 enteredNameIsValid 입력된 입력창이 유효하다면 버튼을 활성화, 그 반대일 경우 비활성화 설정&#10;&#10;&#10;style : index.css 에 button disabled 일 경우 css class 추가&#10;&#10;-버튼이 disabled 일 경우, hover 일 경우, active 할 경우 클릭되지 않도록, 그리고 cursor 는 허용하지않도록 style 추가&#10;&#10;--기능 정상 확인 완료 커밋">
+      <created>1661160805877</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1661160805877</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +118,7 @@
     <MESSAGE value="feat : 이름 입력란 공백 유효성 검사 기능 추가&#10;&#10;-useState 로 nameInputValid 의 상태에따른 조건문으로 코드 생성&#10;-css 효과로 공백 입력 시 빨강 효과 추가&#10;-공백 입력 시 이름 입력 지향 메시지 추가&#10;&#10;--기능 정상 확인 완료 커밋" />
     <MESSAGE value="refactor : enteredNameTouched state 를 하나 더 둬서 enteredNameIsValid 의 state 를 false 초기 상태로 두고 활용할 수 있게해둠&#10;&#10;-초기 state 를 true 로 두는것은 처음부터 유효하다고 정의를 하는것이라 맞지 않다고 여겨 false 로 두기 위한 state 하나를 더 만들어 활용&#10;&#10;--기능 정상 확인 완료 커밋" />
     <MESSAGE value="feat : 이름 입력란 클릭 후 입력하지않고 벗어난 경우 inValid 처리,&#10;입력 완료 후 입력란 초기화 처리,  &#10;&#10;-onBlur 속성 추가 및 입력란 클릭 후 미 입력 시 error 메시지 출력하도록함&#10;-setEnteredName 으로 state 를 빈 문자열로 처리&#10;&#10;--기능 정상 확인 완료 커밋" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat : 이름 입력란 클릭 후 입력하지않고 벗어난 경우 inValid 처리,&#10;입력 완료 후 입력란 초기화 처리,  &#10;&#10;-onBlur 속성 추가 및 입력란 클릭 후 미 입력 시 error 메시지 출력하도록함&#10;-setEnteredName 으로 state 를 빈 문자열로 처리&#10;&#10;--기능 정상 확인 완료 커밋" />
+    <MESSAGE value="feat : form 에 하나라도 유효하지 않는게있다면 submit 할 수 없도록 기능 추가&#10;&#10;-formIsValid 변수를 기본 false 로 두고 만약 enteredNameIsValid 입력된 입력창이 유효하다면 버튼을 활성화, 그 반대일 경우 비활성화 설정&#10;&#10;&#10;style : index.css 에 button disabled 일 경우 css class 추가&#10;&#10;-버튼이 disabled 일 경우, hover 일 경우, active 할 경우 클릭되지 않도록, 그리고 cursor 는 허용하지않도록 style 추가&#10;&#10;--기능 정상 확인 완료 커밋" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat : form 에 하나라도 유효하지 않는게있다면 submit 할 수 없도록 기능 추가&#10;&#10;-formIsValid 변수를 기본 false 로 두고 만약 enteredNameIsValid 입력된 입력창이 유효하다면 버튼을 활성화, 그 반대일 경우 비활성화 설정&#10;&#10;&#10;style : index.css 에 button disabled 일 경우 css class 추가&#10;&#10;-버튼이 disabled 일 경우, hover 일 경우, active 할 경우 클릭되지 않도록, 그리고 cursor 는 허용하지않도록 style 추가&#10;&#10;--기능 정상 확인 완료 커밋" />
   </component>
 </project>
