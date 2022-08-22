@@ -1,4 +1,4 @@
-import {useState, useRef} from 'react';
+import {useState, useRef, useEffect} from 'react';
 import '../index.css'
 
 /*입력 검증 최종 목표
@@ -15,6 +15,9 @@ const SimpleInput = (props) => {
 
 	const [enteredNameTouched, setEnteredNameTouched] = useState(false)
 
+	/*const [formIsValid, setFormIsValid] = useState(false)*/
+
+
 	/*enteredName 이 빈 문자열이아니라면 true*/
 	/*.trim()을 이용해 입력 값의 처음부터 끝 사이에 있는 공백문자를 없앨 수 있음*/
 	const enteredNameIsValid = enteredName.trim() !== ''
@@ -23,6 +26,24 @@ const SimpleInput = (props) => {
 	--반대로 위에서 false 가 된다면 아래 코드에서 !enteredNameIsValid 는 true 가되며
 	---enteredNameTouched 또한 true 가되어 nameInputIsInValid 는 true 로 유효하지않음이 됨*/
 	const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched
+
+	/*formIsValid state 를 지우고 아래와 같이 하면 useEffect 가 필요없어지며 코드 간결화, enteredNameIsValid 가 true 일경우 form 전체 유효성을 true 설정*/
+	let formIsValid = false;
+	if (enteredNameIsValid) {
+	    formIsValid = true
+	}
+
+	/*전체 폼에있는 모든 입력의 유효성 추가
+	* 모든 디펜던시들을 합친 뒤에 이 값이 모두 유효한지 확인하고 만약 그렇다면 전체 폼이 유효하다고 설정
+	useEffect(()=>{
+		if(enteredNameIsValid){
+			setFormIsValid(true)
+		} else{
+			setFormIsValid(false)
+		}
+	}, [enteredNameIsValid])
+	*/
+
 
 	/*키 입력마다 유효성 검증 로직*/
 	const nameInputChangeHandler = (event) => {
@@ -85,7 +106,7 @@ const SimpleInput = (props) => {
 				</div>
 				{nameInputIsInvalid && <p className="error-text">이름 입력란이 비어있습니다. 이름을 입력해주세요.</p>}
 				<div className="form-actions">
-					<button>Submit</button>
+					<button disabled={!formIsValid}>Submit</button> {/*form 이 유효하지않다면 submit btn 비활성화*/}
 				</div>
 			</form>
 	);
