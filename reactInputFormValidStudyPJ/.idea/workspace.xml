@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8cbc9c9-296c-4c43-9ac8-78818f69dff4" name="변경" comment="refactor : useInput 커스텀 훅으로 nameInput 관련된 중복된 코드 정리 및 사용&#10;&#10;-useInput 에서 simpleInput.js 의 코드를 가져와 validateValue 함수로 입력된 값에 대한 검증을 하도록함&#10;-객체 및 함수는 반환하여 호출된 simpleInput.js 에서 키 값으로 기존 simpleInput.js 에 있는 함수 명 및 객체로 옮겨 코드 간결화&#10;&#10;--기능 정상 확인 완료 커밋">
+    <list default="true" id="d8cbc9c9-296c-4c43-9ac8-78818f69dff4" name="변경" comment="feat : 이메일 입력 추가 및 기능 추가&#10;&#10;-이름 입력과 같이 useInput 커스텀 훅을 활용해서 작업했음&#10;-enteredName 과 enteredEmail 모두 유효성 검증되어야 가입하기 버튼 활성화하도록함&#10;&#10;&#10;--기능 정상 확인 완료 커밋">
+      <change afterPath="$PROJECT_DIR$/src/hooks/use-input02.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SimpleInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SimpleInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BasicForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BasicForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +68,7 @@
       <option name="presentableId" value="Default" />
       <updated>1661073781996</updated>
       <workItem from="1661073785136" duration="141000" />
-      <workItem from="1661074002562" duration="34184000" />
+      <workItem from="1661074002562" duration="40441000" />
     </task>
     <task id="LOCAL-00001" summary="feat : 이름 입력 기능 활성화&#10;&#10;-useState 와 useRef 를 통해 각 한 가지씩의 방법으로 입력 기능 추가&#10;-useState 와 useRef 의 입력 및 초기화 방식을 공부하게됨&#10;&#10;--기능 정상 확인 완료 커밋">
       <created>1661084390160</created>
@@ -110,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661198386333</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat : 이메일 입력 추가 및 기능 추가&#10;&#10;-이름 입력과 같이 useInput 커스텀 훅을 활용해서 작업했음&#10;-enteredName 과 enteredEmail 모두 유효성 검증되어야 가입하기 버튼 활성화하도록함&#10;&#10;&#10;--기능 정상 확인 완료 커밋">
+      <created>1661244169905</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1661244169905</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,6 +143,7 @@
     <MESSAGE value="feat : 이름 입력란 클릭 후 입력하지않고 벗어난 경우 inValid 처리,&#10;입력 완료 후 입력란 초기화 처리,  &#10;&#10;-onBlur 속성 추가 및 입력란 클릭 후 미 입력 시 error 메시지 출력하도록함&#10;-setEnteredName 으로 state 를 빈 문자열로 처리&#10;&#10;--기능 정상 확인 완료 커밋" />
     <MESSAGE value="feat : form 에 하나라도 유효하지 않는게있다면 submit 할 수 없도록 기능 추가&#10;&#10;-formIsValid 변수를 기본 false 로 두고 만약 enteredNameIsValid 입력된 입력창이 유효하다면 버튼을 활성화, 그 반대일 경우 비활성화 설정&#10;&#10;&#10;style : index.css 에 button disabled 일 경우 css class 추가&#10;&#10;-버튼이 disabled 일 경우, hover 일 경우, active 할 경우 클릭되지 않도록, 그리고 cursor 는 허용하지않도록 style 추가&#10;&#10;--기능 정상 확인 완료 커밋" />
     <MESSAGE value="refactor : useInput 커스텀 훅으로 nameInput 관련된 중복된 코드 정리 및 사용&#10;&#10;-useInput 에서 simpleInput.js 의 코드를 가져와 validateValue 함수로 입력된 값에 대한 검증을 하도록함&#10;-객체 및 함수는 반환하여 호출된 simpleInput.js 에서 키 값으로 기존 simpleInput.js 에 있는 함수 명 및 객체로 옮겨 코드 간결화&#10;&#10;--기능 정상 확인 완료 커밋" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor : useInput 커스텀 훅으로 nameInput 관련된 중복된 코드 정리 및 사용&#10;&#10;-useInput 에서 simpleInput.js 의 코드를 가져와 validateValue 함수로 입력된 값에 대한 검증을 하도록함&#10;-객체 및 함수는 반환하여 호출된 simpleInput.js 에서 키 값으로 기존 simpleInput.js 에 있는 함수 명 및 객체로 옮겨 코드 간결화&#10;&#10;--기능 정상 확인 완료 커밋" />
+    <MESSAGE value="feat : 이메일 입력 추가 및 기능 추가&#10;&#10;-이름 입력과 같이 useInput 커스텀 훅을 활용해서 작업했음&#10;-enteredName 과 enteredEmail 모두 유효성 검증되어야 가입하기 버튼 활성화하도록함&#10;&#10;&#10;--기능 정상 확인 완료 커밋" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat : 이메일 입력 추가 및 기능 추가&#10;&#10;-이름 입력과 같이 useInput 커스텀 훅을 활용해서 작업했음&#10;-enteredName 과 enteredEmail 모두 유효성 검증되어야 가입하기 버튼 활성화하도록함&#10;&#10;&#10;--기능 정상 확인 완료 커밋" />
   </component>
 </project>
