@@ -14,9 +14,32 @@ const SimpleInput = (props) => {
 		reset: resetNameInput,
 		valueChangeHandler: nameChangeHandler,
 		InputBlurHandler: nameBlurHandler
-	} =useInput(value => value.trim() !== '')/*훅에다 값을 입력해주어야 함, useInput 에서 호출했던 validateValue 함수이며
+	} = useInput(value => value.trim() !== '')/*훅에다 값을 입력해주어야 함, useInput 에서 호출했던 validateValue 함수이며
 이를 위해서 인라인 함수를 정의할 수 있음,value 를 입력받아 빈 문자열과 비교한 결과를 출력하는
 value=>value.trim() !==’’를 정의하며 실제 실행되진않고 useInput 에 입력됨*/
+
+
+	/*E-mail 관련 코드*/
+	const {
+		value: enteredEmail,
+		hasError: emailInputHasError,
+		valueIsValid: enteredEmailIsValid,
+		valueChangeHandler: emailInputChangeHandler,
+		InputBlurHandler: emailInputBlurHandler,
+		reset: resetEmailInput,
+	} = useInput(value => value.includes('@'))
+
+	/*const [enteredEmail, setEnteredEmail] = useState('')
+	const [enteredEmailTouched, setEnteredEmailTouched] = useState(false)*/
+	/*const emailInputChangeHandler = (event) => {
+		setEnteredEmail(event.target.value);
+	};
+	const emailInputBlurHandler = () => {
+		setEnteredEmailTouched(true);
+	};*/
+	/*const enteredEmailIsValid = enteredEmail.includes('@')
+	const enteredEmailIsInvalid = !enteredEmailIsValid && enteredEmailTouched*/
+
 
 	/*input 을 ref 로 설정함으로써 필요할 때 input 요소로부터 값을 읽음*/
 	/*ref 로 입력값 const nameInputRef = useRef()*/
@@ -42,8 +65,8 @@ nameInputIsInValid 는 true 가되며 nameInputIsInvalid 는 true 가 되면서 
 
 	/*formIsValid state 를 지우고 아래와 같이 하면 useEffect 가 필요없어지며 코드 간결화, enteredNameIsValid 가 true 일경우 form 전체 유효성을 true 설정*/
 	let formIsValid = false;
-	if (enteredNameIsValid) {
-	    formIsValid = true
+	if (enteredNameIsValid && enteredEmailIsValid) {
+		formIsValid = true
 	}
 
 	/*전체 폼에있는 모든 입력의 유효성 추가
@@ -85,6 +108,9 @@ nameInputIsInValid 는 true 가되며 nameInputIsInvalid 는 true 가 되면서 
 			return; /*빈 문자열일 경우 실행되지않도록 return 하여 함수의 뒷부분을 실행되지않도록함*/
 			/*return 하게되면 fromSubmissionHandler 는 리렌더링되며 enteredNameIsValid 의 최신값을 가져오게됨*/
 		}
+		if (!enteredEmailIsValid){
+			return;
+		}
 
 		/*nameInputChangeHandler Fn 에 의해 마지막으로 저장된 name 콘솔 출력*/
 		console.log('formSubmissionHandler ::: ', enteredName)
@@ -98,6 +124,12 @@ nameInputIsInValid 는 true 가되며 nameInputIsInvalid 는 true 가 되면서 
 
 		/*useInput 에서 설정된 초기화 함수 호출*/
 		resetNameInput()
+
+		/*email 초기화*/
+		/*setEnteredEmail('')
+		setEnteredEmailTouched(false)*/
+		resetEmailInput()
+
 		/*폼이 제출된 뒤에 enteredNameTouched 를 초기화
 		* -폼이 제출되고 난 뒤에는 새 양식으로 돌아가서 아무것도 건드려지지 않은 상태와 같이 작동하도록함*/
 		/*setEnteredNameTouched(false)*/
@@ -105,11 +137,12 @@ nameInputIsInValid 는 true 가되며 nameInputIsInvalid 는 true 가 되면서 
 
 	/*입력 값이 true/false 라면 css 의 form-control invalid 로*/
 	const nameInputClasses = nameInputHasError ? 'form-control invalid' : 'form-control'
+	const emailInputClasses = emailInputHasError ? 'form-control invalid' : 'form-control'
 
 	return (
 			<form onSubmit={formSubmissionHandler}>
 				<div className={nameInputClasses}>
-					<label htmlFor='name'>Your Name</label>
+					<label htmlFor='name'>이름</label>
 					<input
 							/*ref 로 입력값 ref={nameInputRef}*/
 							value={enteredName}
@@ -120,8 +153,21 @@ nameInputIsInValid 는 true 가되며 nameInputIsInvalid 는 true 가 되면서 
 					/>
 				</div>
 				{nameInputHasError && <p className="error-text">이름 입력란이 비어있습니다. 이름을 입력해주세요.</p>}
+				<div className={emailInputClasses}>
+					<label htmlFor='email'>이메일</label>
+					<input
+							/*ref 로 입력값 ref={nameInputRef}*/
+							value={enteredEmail}
+							type='email'
+							id='email'
+							onChange={emailInputChangeHandler}
+							onBlur={emailInputBlurHandler}
+					/>
+				</div>
+				{emailInputHasError && <p className="error-text">이메일을 다시 확인 해주세요.</p>}
 				<div className="form-actions">
-					<button disabled={!formIsValid}>Submit</button> {/*form 이 유효하지않다면 submit btn 비활성화*/}
+					<button disabled={!formIsValid}>가입하기</button>
+					{/*form 이 유효하지않다면 submit btn 비활성화*/}
 				</div>
 			</form>
 	);
