@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8cbc9c9-296c-4c43-9ac8-78818f69dff4" name="변경" comment="feat : BasicForm 에 firstName,LastName,emailAddress 입력 및 검증 기능 추가&#10;&#10;-커스텀 훅 useInput02 를 활용해 state value, error, isValid, reset 반환하여 사용&#10;-inputChangeHandler 함수로 입력 값을 가져오며 inputBlurHandler 함수는 입력란을 클릭했을 경우 아무것도 입력하지않고 건너띄면 blur 처리 되도록 함&#10;-reset 은 enteredValue state 초기화 및 isTouched false 로 두어 초기화하도록했음&#10;-error 는 validateValue 를 useInput02 의 인수로 함로 받아, 함수로 받을 시 함수 정의에 따라 유효하지않다면 hasError true 로하여 활용했음&#10;-BasicForm.js 에서 formIsValid 로 세가 입력이 모두 true 일때 submit 되도록함 &#10;&#10;--기능 정상 확인 완료 커밋">
+    <list default="true" id="d8cbc9c9-296c-4c43-9ac8-78818f69dff4" name="변경" comment="refactor : BasicForm 에 firstName,LastName,emailAddress 입력 및 검증 기능 추가&#10;&#10;-커스텀 훅 useInput02 에서 useReducer 로 isTouched,enteredValue 2 개의 state 를 묶어 활용했음 &#10;-dispatch 안에서 type 설정을 해줬으며 해당 type 에따라 조건부 반환하도록함 &#10;&#10;--기능 정상 확인 완료 커밋">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/use-input02.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-input02.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +44,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../react-foodOrderSitePJ" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -66,7 +65,7 @@
       <option name="presentableId" value="Default" />
       <updated>1661073781996</updated>
       <workItem from="1661073785136" duration="141000" />
-      <workItem from="1661074002562" duration="44622000" />
+      <workItem from="1661074002562" duration="45096000" />
     </task>
     <task id="LOCAL-00001" summary="feat : 이름 입력 기능 활성화&#10;&#10;-useState 와 useRef 를 통해 각 한 가지씩의 방법으로 입력 기능 추가&#10;-useState 와 useRef 의 입력 및 초기화 방식을 공부하게됨&#10;&#10;--기능 정상 확인 완료 커밋">
       <created>1661084390160</created>
@@ -124,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661261760155</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="refactor : BasicForm 에 firstName,LastName,emailAddress 입력 및 검증 기능 추가&#10;&#10;-커스텀 훅 useInput02 에서 useReducer 로 isTouched,enteredValue 2 개의 state 를 묶어 활용했음 &#10;-dispatch 안에서 type 설정을 해줬으며 해당 type 에따라 조건부 반환하도록함 &#10;&#10;--기능 정상 확인 완료 커밋">
+      <created>1661267196690</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1661267196690</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +156,7 @@
     <MESSAGE value="refactor : useInput 커스텀 훅으로 nameInput 관련된 중복된 코드 정리 및 사용&#10;&#10;-useInput 에서 simpleInput.js 의 코드를 가져와 validateValue 함수로 입력된 값에 대한 검증을 하도록함&#10;-객체 및 함수는 반환하여 호출된 simpleInput.js 에서 키 값으로 기존 simpleInput.js 에 있는 함수 명 및 객체로 옮겨 코드 간결화&#10;&#10;--기능 정상 확인 완료 커밋" />
     <MESSAGE value="feat : 이메일 입력 추가 및 기능 추가&#10;&#10;-이름 입력과 같이 useInput 커스텀 훅을 활용해서 작업했음&#10;-enteredName 과 enteredEmail 모두 유효성 검증되어야 가입하기 버튼 활성화하도록함&#10;&#10;&#10;--기능 정상 확인 완료 커밋" />
     <MESSAGE value="feat : BasicForm 에 firstName,LastName,emailAddress 입력 및 검증 기능 추가&#10;&#10;-커스텀 훅 useInput02 를 활용해 state value, error, isValid, reset 반환하여 사용&#10;-inputChangeHandler 함수로 입력 값을 가져오며 inputBlurHandler 함수는 입력란을 클릭했을 경우 아무것도 입력하지않고 건너띄면 blur 처리 되도록 함&#10;-reset 은 enteredValue state 초기화 및 isTouched false 로 두어 초기화하도록했음&#10;-error 는 validateValue 를 useInput02 의 인수로 함로 받아, 함수로 받을 시 함수 정의에 따라 유효하지않다면 hasError true 로하여 활용했음&#10;-BasicForm.js 에서 formIsValid 로 세가 입력이 모두 true 일때 submit 되도록함 &#10;&#10;--기능 정상 확인 완료 커밋" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat : BasicForm 에 firstName,LastName,emailAddress 입력 및 검증 기능 추가&#10;&#10;-커스텀 훅 useInput02 를 활용해 state value, error, isValid, reset 반환하여 사용&#10;-inputChangeHandler 함수로 입력 값을 가져오며 inputBlurHandler 함수는 입력란을 클릭했을 경우 아무것도 입력하지않고 건너띄면 blur 처리 되도록 함&#10;-reset 은 enteredValue state 초기화 및 isTouched false 로 두어 초기화하도록했음&#10;-error 는 validateValue 를 useInput02 의 인수로 함로 받아, 함수로 받을 시 함수 정의에 따라 유효하지않다면 hasError true 로하여 활용했음&#10;-BasicForm.js 에서 formIsValid 로 세가 입력이 모두 true 일때 submit 되도록함 &#10;&#10;--기능 정상 확인 완료 커밋" />
+    <MESSAGE value="refactor : BasicForm 에 firstName,LastName,emailAddress 입력 및 검증 기능 추가&#10;&#10;-커스텀 훅 useInput02 에서 useReducer 로 isTouched,enteredValue 2 개의 state 를 묶어 활용했음 &#10;-dispatch 안에서 type 설정을 해줬으며 해당 type 에따라 조건부 반환하도록함 &#10;&#10;--기능 정상 확인 완료 커밋" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor : BasicForm 에 firstName,LastName,emailAddress 입력 및 검증 기능 추가&#10;&#10;-커스텀 훅 useInput02 에서 useReducer 로 isTouched,enteredValue 2 개의 state 를 묶어 활용했음 &#10;-dispatch 안에서 type 설정을 해줬으며 해당 type 에따라 조건부 반환하도록함 &#10;&#10;--기능 정상 확인 완료 커밋" />
   </component>
 </project>
