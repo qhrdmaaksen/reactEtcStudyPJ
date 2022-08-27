@@ -10,6 +10,8 @@ const Counter = () => {
 	/*함수는 리덕스가 관리하는 state 를 받으며 state 의 일부인 값을 return 함
 	* -리액트 리덕스에의하여 실행되며 리덕스 state 를 보내고 함수로 data 를 관리함*/
 	const counter = useSelector((state) => state.counter)
+	/*showCounter 접근*/
+	const showCounter = useSelector((state) => state.showCounter)
 
 
 	/*action 설정*/
@@ -31,12 +33,15 @@ const Counter = () => {
 	}
 
 	const toggleCounterHandler = () => {
+		dispatch({
+			type: 'toggle',
+		})
 	};
 
 	return (
 			<main className={classes.counter}>
 				<h1>Redux Counter</h1>
-				<div className={classes.value}>{counter}</div>
+				{showCounter && <div className={classes.value}>{counter}</div>}
 				<div>
 					<button onClick={incrementHandler}>증가</button>
 					<button onClick={increaseHandler}>5씩 증가</button>
