@@ -1,55 +1,59 @@
 import classes from './Counter.module.css';
-import {useSelector, useDispatch, connect} from 'react-redux'
-import {Component} from 'react'
+import { useSelector, useDispatch, connect } from 'react-redux';
+import { Component } from 'react';
+import { INCREMENT, INCREASE, DECREMENT, TOGGLE, counterActions } from '../store/index';
 
 /*===================functional component===================*/
 const Counter = () => {
-	/*리덕스 스토어에대한 엑션을 보낼 함수*/
-	const dispatch = useDispatch()
+  /*리덕스 스토어에대한 엑션을 보낼 함수*/
+  const dispatch = useDispatch();
 
-	/*함수는 리덕스가 관리하는 state 를 받으며 state 의 일부인 값을 return 함
-	* -리액트 리덕스에의하여 실행되며 리덕스 state 를 보내고 함수로 data 를 관리함*/
-	const counter = useSelector((state) => state.counter)
-	/*showCounter 접근*/
-	const showCounter = useSelector((state) => state.showCounter)
+  /*함수는 리덕스가 관리하는 state 를 받으며 state 의 일부인 값을 return 함
+   * -리액트 리덕스에의하여 실행되며 리덕스 state 를 보내고 함수로 data 를 관리함*/
+  const counter = useSelector(state => state.counter);
+  /*showCounter 접근*/
+  const showCounter = useSelector(state => state.showCounter);
 
+  /*action 설정*/
+  const incrementHandler = () => {
+    /*dispatch({
+      type: INCREMENT,
+    });*/
+    dispatch(counterActions.increment());
+  };
+  const increaseHandler = () => {
+    /*dispatch({
+      type: INCREASE,
+      amount: 5,
+    });*/
+    dispatch(counterActions.increase(10)); /*type: 고유한아이디 이미 갖고있음 redux toolkit 에 의하여, payload:10*/
+  };
+  const decrementHandler = () => {
+    /*dispatch({
+      type: DECREMENT,
+    });*/
+    dispatch(counterActions.decrement());
+  };
 
-	/*action 설정*/
-	const incrementHandler = () => {
-		dispatch({
-			type: 'increment',
-		})
-	}
-	const increaseHandler = () => {
-		dispatch({
-			type: 'increase',
-			amount: 5,
-		})
-	}
-	const decrementHandler = () => {
-		dispatch({
-			type: 'decrement',
-		})
-	}
+  const toggleCounterHandler = () => {
+    /*dispatch({
+      type: TOGGLE,
+    });*/
+    dispatch(counterActions.toggleCounter());
+  };
 
-	const toggleCounterHandler = () => {
-		dispatch({
-			type: 'toggle',
-		})
-	};
-
-	return (
-			<main className={classes.counter}>
-				<h1>Redux Counter</h1>
-				{showCounter && <div className={classes.value}>{counter}</div>}
-				<div>
-					<button onClick={incrementHandler}>증가</button>
-					<button onClick={increaseHandler}>5씩 증가</button>
-					<button onClick={decrementHandler}>감소</button>
-				</div>
-				<button onClick={toggleCounterHandler}>Toggle Counter</button>
-			</main>
-	);
+  return (
+    <main className={classes.counter}>
+      <h1>Redux Counter</h1>
+      {showCounter && <div className={classes.value}>{counter}</div>}
+      <div>
+        <button onClick={incrementHandler}>증가</button>
+        <button onClick={increaseHandler}>10씩 증가</button>
+        <button onClick={decrementHandler}>감소</button>
+      </div>
+      <button onClick={toggleCounterHandler}>Toggle Counter</button>
+    </main>
+  );
 };
 export default Counter;
 
