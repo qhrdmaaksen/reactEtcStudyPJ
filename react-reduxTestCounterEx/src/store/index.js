@@ -6,6 +6,12 @@ const counterReducer = (state = {counter: 0}, action) => {
 			counter: state.counter + 1,
 		}
 	}
+	/*카운터를 고정된 수가아닌 엑션으로 들어온 값에따라 증가도록함*/
+	if (action.type === 'increase'){
+		return {
+			counter: state.counter + action.amount,
+		}
+	}
 	if (action.type === 'decrement') {
 		return {
 			counter: state.counter - 1,
