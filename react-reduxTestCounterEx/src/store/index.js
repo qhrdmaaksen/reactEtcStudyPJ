@@ -5,7 +5,7 @@ export const INCREASE = 'increase';
 export const DECREMENT = 'decrement';
 export const TOGGLE = 'toggle';*/
 
-const initialState = { counter: 0, showCounter: true };
+const initialCounterState = { counter: 0, showCounter: true };
 
 /*createSlice 는 객체를 인자로 생성함
  * -아래에선 인증 state 와 counter state 를 다룸
@@ -13,7 +13,7 @@ const initialState = { counter: 0, showCounter: true };
  * -reducer 추가해야함 리듀서는 객체 혹은 맵이라 할 수 있음*/
 const counterSlice = createSlice({
   name: 'counter',
-  initialState,
+  initialState: initialCounterState,
   reducers: {
     /*이 메서드들은 나중에 리덕스에 의해 호출되고 현재 상태를 받음
      * -상태를 직접 변경할수있게함(내부적으론 알아서 변경할수없는 코드로 반환함 툴킷이)*/
@@ -31,9 +31,26 @@ const counterSlice = createSlice({
     },
   },
 });
+/*===============로그인 인증 관련 로직===============*/
+const initialAuthState = {
+  isAuthenticated: false,
+};
+
+const authSlice = createSlice({
+  name: 'authentication',
+  initialState: initialAuthState,
+  reducers: {
+    login(state) {
+      state.isAuthenticated = true;
+    },
+    logout(state) {
+      state.isAuthenticated = false;
+    },
+  },
+});
 
 /* createSlice 를 사용하며 필요 없어진 로직
-const counterReducer = (state = initialState, action) => {
+const counterReducer = (state = initialCounterState, action) => {
   if (action.type === INCREMENT) {
     return {
       counter: state.counter + 1,
@@ -70,7 +87,10 @@ const store = configureStore({
   * ---key value 를 설정해서 프로퍼티들의 값이 또다른 리듀서 함수가 됨, 결국 리듀서 맵을 생성하는 것이며 맵은 주요 리듀서의 값이되고
   * ----보이진 않지만 configureStore 의 모든 리듀서를 하나의 큰 리듀서로 병합함
   */
-  reducer: counterSlice.reducer,
+  reducer: {
+    counter: counterSlice.reducer,
+    auth: authSlice.reducer,
+  },
 });
 /*createSlice 함수의 리듀서 영역에 있는 메서드 이름과 매칭
 * -actions 의 객체에서 이런 key 에 접근할 수 있으며 그러면 리듀서 메서드에 접근할 필요가 없어짐, 대신에 Redux toolkit 에 의해
@@ -79,5 +99,6 @@ const store = configureStore({
 그래서 액션 식별자에 대해 신경 쓸 필요 없어짐 직접 액션 객체를 생성할 필요가 없음 단지 createSlice 의 actions key 및 객체를 사용하면 됨
 * 액션 생성자 매서드를 실행해서 리듀서 메서드와 이름이 같으면 액션을 전달하며 그러면 최종적으로 서로 다른 매서드를 작동키는 원리*/
 export const counterActions = counterSlice.actions;
+export const authActions = authSlice.actions;
 
 export default store;

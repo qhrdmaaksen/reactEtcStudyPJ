@@ -9,10 +9,13 @@ const Counter = () => {
   const dispatch = useDispatch();
 
   /*함수는 리덕스가 관리하는 state 를 받으며 state 의 일부인 값을 return 함
-   * -리액트 리덕스에의하여 실행되며 리덕스 state 를 보내고 함수로 data 를 관리함*/
-  const counter = useSelector(state => state.counter);
+   * -리액트 리덕스에의하여 실행되며 리덕스 state 를 보내고 함수로 data 를 관리함
+   * -state.counter.counter 의 앞 counter 는 리액트 리덕스에게 slice 에 접근한다는 걸 알려주기 위함이고
+   * --slice 의 리듀서가 만든 state 를 말함, 그리고 그 상태 slice 에서 가지고 있는 프로퍼티 이름이 counter
+   * --- 만약에 counter 가 아닌 다른 이름이었다면, 가령 value 라면, Counter 컴포넌트에서 state.counter.value 가 됨*/
+  const counter = useSelector(state => state.counter.counter);
   /*showCounter 접근*/
-  const showCounter = useSelector(state => state.showCounter);
+  const showCounter = useSelector(state => state.counter.showCounter);
 
   /*action 설정*/
   const incrementHandler = () => {
