@@ -1,7 +1,7 @@
 import classes from './Counter.module.css';
 import { useSelector, useDispatch, connect } from 'react-redux';
 import { Component } from 'react';
-import { INCREMENT, INCREASE, DECREMENT, TOGGLE, counterActions } from '../store/index';
+import { INCREMENT, INCREASE, DECREMENT, TOGGLE, counterActions } from '../store/counter';
 
 /*===================functional component===================*/
 const Counter = () => {

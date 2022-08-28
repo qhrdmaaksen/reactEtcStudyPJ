@@ -1,6 +1,4 @@
 import classes from './UserProfile.module.css';
-import {useDispatch, useSelector} from "react-redux";
-import {authActions} from "../store";
 
 const UserProfile = () => {
 
