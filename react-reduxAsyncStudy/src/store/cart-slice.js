@@ -8,6 +8,11 @@ const cartSlice = createSlice({
     totalQuantity: 0,
   },
   reducers: {
+    /*카트 교환
+    replaceCart(state, action){
+      state.totalQuantity = action.payload.totalQuantity;
+      state.items = action.payload.items;
+    },*/
     /*items 를 추가 메서드*/
     addItemToCart(state, action) {
       const newItem = action.payload; /* 작업에 추가하는 데이터 설정 payload*/
@@ -50,6 +55,7 @@ const cartSlice = createSlice({
         /*수량 감소 시 총 가격 업데이트*/
         existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
       }
+
     },
   },
 });
