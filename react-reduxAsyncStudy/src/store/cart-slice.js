@@ -6,6 +6,7 @@ const cartSlice = createSlice({
   initialState: {
     items: [],
     totalQuantity: 0,
+    changed: false,
   },
   reducers: {
     /*리듀서를 사용하여 Firebase 에서 로드하는 장바구니로 프론트엔드 장바구니를 교체*/
@@ -19,6 +20,8 @@ const cartSlice = createSlice({
       /*기존 항목에 추가할 항목을 id 를 통해 찾음(id 를 가지고있다는 가정)*/
       const existingItem = state.items.find(item => item.id === newItem.id);
       state.totalQuantity++; /*상품추가 시 새상품의 카운터1개씩 늘어남에따라 총 수량도 1개씩 증가*/
+      /*장바구니를 교체한 경우에는 변경하지 않지만 장바구니에 항목을 추가하거나 장바구니에서 제거하는 경우엔 변경*/
+      state.changed = true;
       /*기존 배열에 들어있지 않은 item 일 경우
        * -redux toolkit 이아닌 redux 만 사용할 경우 push 는 기존 state 의 기존 배열을 조작하기에 사용하면안됨
        * --redux toolkit 에는 내부적으로 immer 가 기존 state 를 조작하지 않도록 불변성 유지되기에 문제되지않음*/
@@ -44,6 +47,8 @@ const cartSlice = createSlice({
         item => item.id === id,
       ); /*기존 아이템의 id 와 payload 로 들어온 id 가 같은걸 찾음*/
       state.totalQuantity--; /*상품을 1개씩 제거함에따라 총 수량도 하나씩 감소*/
+      /*장바구니를 교체한 경우에는 변경하지 않지만 장바구니에 항목을 추가하거나 장바구니에서 제거하는 경우엔 변경*/
+      state.changed = true;
       if (existingItem.quantity === 1) {
         /*아이템의 수량이 1 개라면 바로 삭제*/
         state.items = state.items.filter(

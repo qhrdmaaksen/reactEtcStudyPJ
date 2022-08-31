@@ -5,7 +5,9 @@ import { cartActions } from './cart-slice';
 export const fetchCartData = () => {
   return async dispatch => {
     const fetchData = async () => {
-      const response = await fetch('https://react-http-d5583-default-rtdb.firebaseio.com/cart.json');
+      const response = await fetch(
+        'https://react-http-d5583-default-rtdb.firebaseio.com/cart.json',
+      );
       if (!response.ok) {
         throw new Error('fetchCartData :::데이터를 불러오는중 에러 발생');
       }
@@ -15,7 +17,13 @@ export const fetchCartData = () => {
     try {
       const cartData = await fetchData();
       /*장바구니를 받아 cart-slice.js 에있는 replaceCart 에 cartData 전송*/
-      dispatch(cartActions.replaceCart(cartData));
+      dispatch(
+        cartActions.replaceCart({
+          /*replaceCart 에 전달하는 payload 가 cartData.items 인 키를 갖는 객체인지 확인*/
+          items: cartData.items || [],
+          totalQuantity: cartData.totalQuantity,
+        }),
+      );
     } catch (error) {
       /*오류 있을 시 에러 알림*/
       dispatch(
@@ -42,10 +50,16 @@ export const sendCartData = cart => {
     );
     const sendRequest = async () => {
       /*요청 데이터*/
-      const response = await fetch('https://react-http-d5583-default-rtdb.firebaseio.com/cart.json', {
-        method: 'PUT',
-        body: JSON.stringify(cart),
-      });
+      const response = await fetch(
+        'https://react-http-d5583-default-rtdb.firebaseio.com/cart.json',
+        {
+          method: 'PUT',
+          body: JSON.stringify({
+            /*changed 는 포함하지 않고 총수량과 아이템만있는 객체 생성*/ items: cart.items,
+            totalQuantity: cart.totalQuantity,
+          }),
+        },
+      );
       if (!response.ok) {
         throw new Error('cart data 전송 중 에러 발생');
       }

@@ -36,8 +36,11 @@ function App() {
       return;
     }
     /*디스패치할때 리덕스가 계속진행되며 sendCartData 를 실행하면 다른 모든 작업이
-    * --디스패치되고 리덕스 파일의 사용자 지정 작업 크리에이터 함수 내부에서 http 요청도 전송됨*/
+    * --디스패치되고 리덕스 파일의 사용자 지정 작업 크리에이터 함수 내부에서 http 요청도 전송됨
+    * -cart-slice.js 에서 설정한 changed 가 true 일 경우에만 추가 및 제거 변경 요청 보내도록함*/
+    if (cart.changed) {
     dispatch(sendCartData(cart))
+    }
   }, [cart, dispatch]);
 
   return (
