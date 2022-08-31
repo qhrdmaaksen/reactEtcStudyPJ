@@ -8,11 +8,11 @@ const cartSlice = createSlice({
     totalQuantity: 0,
   },
   reducers: {
-    /*카트 교환
+    /*리듀서를 사용하여 Firebase 에서 로드하는 장바구니로 프론트엔드 장바구니를 교체*/
     replaceCart(state, action){
       state.totalQuantity = action.payload.totalQuantity;
       state.items = action.payload.items;
-    },*/
+    },
     /*items 를 추가 메서드*/
     addItemToCart(state, action) {
       const newItem = action.payload; /* 작업에 추가하는 데이터 설정 payload*/

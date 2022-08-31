@@ -17,9 +17,11 @@ const uiSlice = createSlice({
         status: action.payload.status,
         title: action.payload.title,
         message: action.payload.title,
-      }
+      };
     },
   },
 });
+
+
 export const uiActions = uiSlice.actions;
 export default uiSlice.reducer;
