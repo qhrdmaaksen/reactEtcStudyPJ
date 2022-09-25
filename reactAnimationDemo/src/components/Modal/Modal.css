@@ -10,11 +10,48 @@
     top: 30%;
     left: 25%;
     width: 50%;
+    transition: all 0.3s ease-out;/*모든속성전환, 0.3초 동안, */
 }
 
 .ModalOpen {
-    display: block;
+    /*display: block;*/
+    /*opacity: 1;
+    transform: translateY(0);!*Y 축에서 축에서 0만큼 슬라이딩 하도록*!*/
+    animation: openModal 0.4s ease-out forwards;
 }
 .ModalClose {
-    display: none;
+    /*display: none;*/
+    /*opacity: 0;*/
+    /*transform: translateY(-100%);!*!*설정해서 위로 100% 이동하도록*!*/
+    animation: closeModal 0.4s ease-out forwards;
+}
+
+@keyframes openModal {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(90%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes closeModal {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(60%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
 }
