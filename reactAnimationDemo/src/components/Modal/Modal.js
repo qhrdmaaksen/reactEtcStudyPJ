@@ -24,7 +24,15 @@ const modal = (props) => {
       unmountOnExit
       in={props.show}
       timeout={animationTiming}
-      classNames="fade-slide"
+      classNames={'fade-slide'/*{
+        enter: '',
+        enterActive:
+          'ModalOpen' /!*이렇게하면 -enter 다음에 enter-active 등과 같은 식의 틀을 깰 수 있음*!/,
+        exit: '',
+        exitActive: 'ModalClosed',
+        appear: '',
+        appearActive: '',
+      }*/}
     >
       <div className={'Modal'}>
         <h1>A Modal</h1>
