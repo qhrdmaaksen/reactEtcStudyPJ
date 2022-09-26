@@ -23,6 +23,19 @@
     /*display: none;*/
     /*opacity: 0;*/
     /*transform: translateY(-100%);!*!*설정해서 위로 100% 이동하도록*!*/
+    animation: closeModal 1s ease-out forwards;
+}
+
+.fade-slide-enter {
+
+}
+.fade-slide-enter-active {
+    animation : openModal 0.4s ease-out forwards;
+}
+.fade-slide-exit {
+
+}
+.fade-slide-exit-active {
     animation: closeModal 0.4s ease-out forwards;
 }
 

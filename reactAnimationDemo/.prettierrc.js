@@ -1,6 +1,6 @@
 module.exports =  {
 	//한 줄이 이 글자수를 넘게 되면 들여쓰기되어 코드가 세로로 정리된다. (default: 80)
-	"printWidth": 100,
+	"printWidth": 80,
 	//탭 너비 (default: 2)
 	"tabWidth": 2,
 	//탭 사용 여부. 참이면 탭이있는 줄을 들여 쓰기 한다. (default: false)
