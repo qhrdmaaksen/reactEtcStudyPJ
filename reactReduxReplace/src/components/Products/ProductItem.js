@@ -3,17 +3,17 @@ import React, {useContext} from 'react';
 import {ProductsContext} from '../../context/products-context'
 import Card from '../UI/Card';
 import './ProductItem.css';
-import { toggleFav } from '../../store/actions/products';
+/*import { toggleFav } from '../../store/actions/products';*/
 
 const ProductItem = props => {
   /*const dispatch = useDispatch();*/
-  const toggleFav = useContext(ProductsContext).toggleFav
+  /*const toggleFav = useContext(ProductsContext).toggleFav*/
 
   const toggleFavHandler = () => {
     /*dispatch(toggleFav(props.id));*/
     console.log('toggleFavHandler Fn 호출중')
-    toggleFav(props.id)
-    console.log('toggleFavHandler Fn toggleFav value', toggleFav)
+    /*toggleFav(props.id)*/
+    /*console.log('toggleFavHandler Fn toggleFav value', toggleFav)*/
   };
 
   return (
