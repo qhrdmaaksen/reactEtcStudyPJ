@@ -1,6 +1,7 @@
 import { initStore } from './store';
 
 const configureStore = () => {
+  /*action map : store 를 초기화할때 사용*/
   const actions = {
     TOGGLE_FAV: (curState, productId) => {
       const prodIndex = curState.products.findIndex((p) => p.id === productId);

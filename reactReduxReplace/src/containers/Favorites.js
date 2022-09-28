@@ -3,9 +3,14 @@ import React, {useContext} from 'react';
 import {ProductsContext} from "../context/products-context";
 import FavoriteItem from '../components/Favorites/FavoriteItem';
 import './Products.css';
+import {useStore} from '../hooks-store/store'
 
 const Favorites = props => {
-  const favoriteProducts = useContext(ProductsContext).products.filter(p => p.isFavorite )
+  /*store 에 첫번째 인자인 curState*/
+  const state = useStore()[0]
+  const favoriteProducts = state.products.filter(fav => fav.isFavorite)
+
+  /*const favoriteProducts = useContext(ProductsContext).products.filter(p => p.isFavorite )*/
   /*const favoriteProducts = useSelector(state =>
     state.shop.products.filter(p => p.isFavorite)
   );*/
