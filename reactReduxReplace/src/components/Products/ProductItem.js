@@ -1,24 +1,25 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 /*import { useDispatch } from 'react-redux';*/
-import {ProductsContext} from '../../context/products-context'
+import { ProductsContext } from '../../context/products-context';
 import Card from '../UI/Card';
 import './ProductItem.css';
 /*import { toggleFav } from '../../store/actions/products';*/
-import {useStore} from '../../hooks-store/store'
+import { useStore } from '../../hooks-store/store';
 
-const ProductItem = props => {
+const ProductItem = React.memo(props => {
+  console.log('productItem rendering');
   /*store 에서 두번째 요소인 dispatch 만 사용*/
-  const dispatch = useStore()[1]
+  const dispatch = useStore(false)[1];
 
   /*const dispatch = useDispatch();*/
   /*const toggleFav = useContext(ProductsContext).toggleFav*/
 
   const toggleFavHandler = () => {
     /*productId에 대한 payload*/
-    dispatch('TOGGLE_FAV', props.id)
+    dispatch('TOGGLE_FAV', props.id);
 
     /*dispatch(toggleFav(props.id));*/
-    console.log('toggleFavHandler Fn 호출중')
+    console.log('toggleFavHandler Fn 호출중');
     /*toggleFav(props.id)*/
     /*console.log('toggleFavHandler Fn toggleFav value', toggleFav)*/
   };
@@ -37,6 +38,6 @@ const ProductItem = props => {
       </div>
     </Card>
   );
-};
+});
 
 export default ProductItem;
