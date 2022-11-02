@@ -9,6 +9,7 @@ export async function getPosts() {
 }
 
 export async function getSlowPosts() {
+  // 요청을 전송하기전 2초간 실행 멈춤
   await sleep(2000);
   const response = await fetch('https://jsonplaceholder.typicode.com/posts');
   if (!response.ok) {
